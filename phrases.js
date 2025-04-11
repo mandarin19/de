@@ -1,5 +1,8 @@
 fetch('data/phrases.json')
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) throw new Error('Не удалось загрузить phrases.json');
+    return response.json();
+  })
   .then(phrases => {
     let currentIndex = 0;
     let currentPhrases = phrases;
@@ -8,13 +11,20 @@ fetch('data/phrases.json')
 
     const germanEl = document.getElementById('phrase-german');
     const ukrainianEl = document.getElementById('phrase-ukrainian');
+    const audioBtn = document.getElementById('audio-btn');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
     const menuBtn = document.getElementById('menu-btn');
     const closeMenuBtn = document.getElementById('close-menu');
     const menu = document.getElementById('menu');
+    const sectionSelect = document.getElementById('section');
     const modeSelect = document.getElementById('mode');
     const categorySelect = document.getElementById('category');
+
+    if (!menuBtn || !closeMenuBtn || !menu) {
+      console.error('Ошибка: Элементы меню не найдены в DOM');
+      return;
+    }
 
     function updateCard() {
       if (currentPhrases.length === 0) return;
@@ -23,6 +33,15 @@ fetch('data/phrases.json')
       ukrainianEl.textContent = phrase.ukrainian;
       ukrainianEl.classList.add('blur-sm');
       ukrainianEl.onclick = () => ukrainianEl.classList.toggle('blur-sm');
+      audioBtn.disabled = false;
+      audioBtn.textContent = '▶ Вимова';
+    }
+
+    function playAudio() {
+      const phrase = currentPhrases[currentIndex];
+      const utterance = new SpeechSynthesisUtterance(phrase.german);
+      utterance.lang = 'de-DE'; // Немецкий язык
+      window.speechSynthesis.speak(utterance);
     }
 
     function shuffle(array) {
@@ -54,12 +73,20 @@ fetch('data/phrases.json')
       updateCard();
     });
 
+    audioBtn.addEventListener('click', playAudio);
+
     menuBtn.addEventListener('click', () => {
-      menu.classList.remove('translate-x-full');
+      menu.classList.toggle('translate-x-full');
+      menu.classList.toggle('hidden');
     });
 
     closeMenuBtn.addEventListener('click', () => {
       menu.classList.add('translate-x-full');
+      menu.classList.add('hidden');
+    });
+
+    sectionSelect.addEventListener('change', e => {
+      window.location.href = `${e.target.value}.html`;
     });
 
     modeSelect.addEventListener('change', e => {
@@ -74,4 +101,4 @@ fetch('data/phrases.json')
 
     updatePhrases();
   })
-  .catch(err => console.error('Fetch error:', err));
+  .catch(err => console.error('Ошибка загрузки данных:', err));
