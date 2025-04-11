@@ -1,5 +1,8 @@
 fetch('data/articles.json')
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) throw new Error('Не удалось загрузить articles.json');
+    return response.json();
+  })
   .then(articles => {
     let currentIndex = 0;
     let currentArticles = articles;
@@ -18,22 +21,35 @@ fetch('data/articles.json')
     const modeSelect = document.getElementById('mode');
     const categorySelect = document.getElementById('category');
 
+    // Проверка элементов DOM
+    if (!menuBtn || !closeMenuBtn || !menu) {
+      console.error('Ошибка: Элементы меню не найдены в DOM');
+      return;
+    }
+
     function updateCard() {
       if (currentArticles.length === 0) return;
       const article = currentArticles[currentIndex];
-      imageEl.src = article.image || 'https://via.placeholder.com/300x200';
+      imageEl.src = article.image || 'https://via.placeholder.com/300x200?text=Картинка+недоступна';
+      imageEl.onerror = () => {
+        imageEl.src = 'https://via.placeholder.com/300x200?text=Картинка+недоступна';
+      };
       germanEl.textContent = `${article.article} ${article.german}`;
       ukrainianEl.textContent = article.ukrainian;
       ukrainianEl.classList.add('blur-sm');
       ukrainianEl.onclick = () => ukrainianEl.classList.toggle('blur-sm');
       audioBtn.disabled = !article.audio;
+      audioBtn.textContent = article.audio ? '▶ Вимова' : 'Аудіо недоступне';
     }
 
     function playAudio() {
       const article = currentArticles[currentIndex];
       if (article.audio) {
         const audio = new Audio(article.audio);
-        audio.play().catch(err => console.error('Audio error:', err));
+        audio.play().catch(err => {
+          console.error('Ошибка воспроизведения:', err);
+          audioBtn.textContent = 'Помилка аудіо';
+        });
       }
     }
 
@@ -68,12 +84,15 @@ fetch('data/articles.json')
 
     audioBtn.addEventListener('click', playAudio);
 
+    // Исправленное открытие/закрытие меню
     menuBtn.addEventListener('click', () => {
-      menu.classList.remove('translate-x-full');
+      menu.classList.toggle('translate-x-full');
+      menu.classList.toggle('hidden');
     });
 
     closeMenuBtn.addEventListener('click', () => {
       menu.classList.add('translate-x-full');
+      menu.classList.add('hidden');
     });
 
     modeSelect.addEventListener('change', e => {
@@ -86,6 +105,7 @@ fetch('data/articles.json')
       updateArticles();
     });
 
+    // Инициализация
     updateArticles();
   })
-  .catch(err => console.error('Fetch error:', err));
+  .catch(err => console.error('Ошибка загрузки данных:', err));
