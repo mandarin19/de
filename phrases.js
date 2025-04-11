@@ -10,6 +10,9 @@ fetch('data/phrases.json')
     const ukrainianEl = document.getElementById('phrase-ukrainian');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
+    const menuBtn = document.getElementById('menu-btn');
+    const closeMenuBtn = document.getElementById('close-menu');
+    const menu = document.getElementById('menu');
     const modeSelect = document.getElementById('mode');
     const categorySelect = document.getElementById('category');
 
@@ -49,6 +52,14 @@ fetch('data/phrases.json')
     nextBtn.addEventListener('click', () => {
       currentIndex = currentIndex < currentPhrases.length - 1 ? currentIndex + 1 : 0;
       updateCard();
+    });
+
+    menuBtn.addEventListener('click', () => {
+      menu.classList.remove('translate-x-full');
+    });
+
+    closeMenuBtn.addEventListener('click', () => {
+      menu.classList.add('translate-x-full');
     });
 
     modeSelect.addEventListener('change', e => {

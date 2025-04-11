@@ -12,6 +12,9 @@ fetch('data/articles.json')
     const audioBtn = document.getElementById('audio-btn');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
+    const menuBtn = document.getElementById('menu-btn');
+    const closeMenuBtn = document.getElementById('close-menu');
+    const menu = document.getElementById('menu');
     const modeSelect = document.getElementById('mode');
     const categorySelect = document.getElementById('category');
 
@@ -61,6 +64,14 @@ fetch('data/articles.json')
     });
 
     audioBtn.addEventListener('click', playAudio);
+
+    menuBtn.addEventListener('click', () => {
+      menu.classList.remove('translate-x-full');
+    });
+
+    closeMenuBtn.addEventListener('click', () => {
+      menu.classList.add('translate-x-full');
+    });
 
     modeSelect.addEventListener('change', e => {
       mode = e.target.value;
