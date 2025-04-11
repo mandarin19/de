@@ -13,3 +13,15 @@ body {
 button {
   transition: background-color 0.3s ease;
 }
+
+select, button {
+  outline: none;
+}
+
+.card {
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
