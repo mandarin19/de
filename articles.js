@@ -21,17 +21,20 @@ fetch('data/articles.json')
     function updateCard() {
       if (currentArticles.length === 0) return;
       const article = currentArticles[currentIndex];
-      imageEl.src = article.image;
+      imageEl.src = article.image || 'https://via.placeholder.com/300x200';
       germanEl.textContent = `${article.article} ${article.german}`;
       ukrainianEl.textContent = article.ukrainian;
       ukrainianEl.classList.add('blur-sm');
       ukrainianEl.onclick = () => ukrainianEl.classList.toggle('blur-sm');
+      audioBtn.disabled = !article.audio;
     }
 
     function playAudio() {
       const article = currentArticles[currentIndex];
-      const audio = new Audio(article.audio);
-      audio.play().catch(err => console.error('Audio error:', err));
+      if (article.audio) {
+        const audio = new Audio(article.audio);
+        audio.play().catch(err => console.error('Audio error:', err));
+      }
     }
 
     function shuffle(array) {

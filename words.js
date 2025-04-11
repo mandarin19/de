@@ -21,17 +21,20 @@ fetch('data/words.json')
     function updateCard() {
       if (currentWords.length === 0) return;
       const word = currentWords[currentIndex];
-      imageEl.src = word.image;
+      imageEl.src = word.image || 'https://via.placeholder.com/300x200';
       germanEl.textContent = word.german;
       ukrainianEl.textContent = word.ukrainian;
       ukrainianEl.classList.add('blur-sm');
       ukrainianEl.onclick = () => ukrainianEl.classList.toggle('blur-sm');
+      audioBtn.disabled = !word.audio;
     }
 
     function playAudio() {
       const word = currentWords[currentIndex];
-      const audio = new Audio(word.audio);
-      audio.play().catch(err => console.error('Audio error:', err));
+      if (word.audio) {
+        const audio = new Audio(word.audio);
+        audio.play().catch(err => console.error('Audio error:', err));
+      }
     }
 
     function shuffle(array) {
