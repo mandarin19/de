@@ -8,5 +8,15 @@
   {"id": 7, "german": "Wo ist...?", "ukrainian": "Де...?", "category": "Вопросы"},
   {"id": 8, "german": "Ich heiße...", "ukrainian": "Мене звати...", "category": "Повседневные фразы"},
   {"id": 9, "german": "Bitte schön!", "ukrainian": "Будь ласка!", "category": "Повседневные фразы"},
-  {"id": 10, "german": "Ich liebe dich.", "ukrainian": "Я тебе люблю.", "category": "Чувства"}
+  {"id": 10, "german": "Ich liebe dich.", "ukrainian": "Я тебе люблю.", "category": "Чувства"},
+  {"id": 11, "german": "Guten Tag!", "ukrainian": "Добрий день!", "category": "Приветствия"},
+  {"id": 12, "german": "Was machst du?", "ukrainian": "Що ти робиш?", "category": "Вопросы"},
+  {"id": 13, "german": "Kannst du mir helfen?", "ukrainian": "Чи можеш ти мені допомогти?", "category": "Повседневные фразы"},
+  {"id": 14, "german": "Ich möchte bestellen.", "ukrainian": "Я хочу замовити.", "category": "Ресторан"},
+  {"id": 15, "german": "Wo ist der Bahnhof?", "ukrainian": "Де вокзал?", "category": "Путешествия"},
+  {"id": 16, "german": "Es tut mir leid.", "ukrainian": "Мені шкода.", "category": "Чувства"},
+  {"id": 17, "german": "Wie heißt du?", "ukrainian": "Як тебе звати?", "category": "Вопросы"},
+  {"id": 18, "german": "Guten Abend!", "ukrainian": "Добрий вечір!", "category": "Приветствия"},
+  {"id": 19, "german": "Ich bin müde.", "ukrainian": "Я втомився.", "category": "Чувства"},
+  {"id": 20, "german": "Kann ich bezahlen?", "ukrainian": "Чи можу я оплатити?", "category": "Покупки"}
 ]
