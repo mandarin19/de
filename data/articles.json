@@ -1,0 +1,12 @@
+[
+  {"id": 1, "article": "das", "german": "Haus", "ukrainian": "Дім", "image": "https://source.unsplash.com/random/?house", "audio": "https://forvo.com/word/haus/#de", "category": "Дом"},
+  {"id": 2, "article": "das", "german": "Auto", "ukrainian": "Машина", "image": "https://source.unsplash.com/random/?car", "audio": "https://forvo.com/word/auto/#de", "category": "Транспорт"},
+  {"id": 3, "article": "der", "german": "Apfel", "ukrainian": "Яблуко", "image": "https://source.unsplash.com/random/?apple", "audio": "https://forvo.com/word/apfel/#de", "category": "Еда"},
+  {"id": 4, "article": "der", "german": "Hund", "ukrainian": "Собака", "image": "https://source.unsplash.com/random/?dog", "audio": "https://forvo.com/word/hund/#de", "category": "Животные"},
+  {"id": 5, "article": "das", "german": "Buch", "ukrainian": "Книга", "image": "https://source.unsplash.com/random/?book", "audio": "https://forvo.com/word/buch/#de", "category": "Учёба"},
+  {"id": 6, "article": "der", "german": "Tisch", "ukrainian": "Стіл", "image": "https://source.unsplash.com/random/?table", "audio": "https://forvo.com/word/tisch/#de", "category": "Дом"},
+  {"id": 7, "article": "das", "german": "Wasser", "ukrainian": "Вода", "image": "https://source.unsplash.com/random/?water", "audio": "https://forvo.com/word/wasser/#de", "category": "Еда"},
+  {"id": 8, "article": "die", "german": "Katze", "ukrainian": "Кіт", "image": "https://source.unsplash.com/random/?cat", "audio": "https://forvo.com/word/katze/#de", "category": "Животные"},
+  {"id": 9, "article": "der", "german": "Baum", "ukrainian": "Дерево", "image": "https://source.unsplash.com/random/?tree", "audio": "https://forvo.com/word/baum/#de", "category": "Природа"},
+  {"id": 10, "article": "der", "german": "Freund", "ukrainian": "Друг", "image": "https://source.unsplash.com/random/?friend", "audio": "https://forvo.com/word/freund/#de", "category": "Люди"}
+]

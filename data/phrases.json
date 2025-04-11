@@ -1,0 +1,12 @@
+[
+  {"id": 1, "german": "Guten Morgen!", "ukrainian": "Добрий ранок!", "category": "Приветствия"},
+  {"id": 2, "german": "Wie geht's?", "ukrainian": "Як справи?", "category": "Вопросы"},
+  {"id": 3, "german": "Danke schön!", "ukrainian": "Дякую!", "category": "Повседневные фразы"},
+  {"id": 4, "german": "Wie viel kostet das?", "ukrainian": "Скільки це коштує?", "category": "Покупки"},
+  {"id": 5, "german": "Ich verstehe.", "ukrainian": "Я розумію.", "category": "Повседневные фразы"},
+  {"id": 6, "german": "Entschuldigung!", "ukrainian": "Вибачте!", "category": "Повседневные фразы"},
+  {"id": 7, "german": "Wo ist...?", "ukrainian": "Де...?", "category": "Вопросы"},
+  {"id": 8, "german": "Ich heiße...", "ukrainian": "Мене звати...", "category": "Повседневные фразы"},
+  {"id": 9, "german": "Bitte schön!", "ukrainian": "Будь ласка!", "category": "Повседневные фразы"},
+  {"id": 10, "german": "Ich liebe dich.", "ukrainian": "Я тебе люблю.", "category": "Чувства"}
+]
