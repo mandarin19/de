@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  < meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Артиклі - Вивчення німецької</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen font-sans">
+  <header class="bg-white shadow-sm">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <ul class="flex space-x-6 justify-center">
+        <li><a href="words.html" class="text-gray-800 hover:text-blue-600 text-lg font-medium">Слова</a></li>
+        <li><a href="articles.html" class="text-blue-600 text-lg font-medium">Артиклі</a></li>
+        <li><a href="phrases.html" class="text-gray-800 hover:text-blue-600 text-lg font-medium">Фрази</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="flex-grow flex items-center justify-center px-4 py-8">
+    <div class="bg-white p-6 rounded-2xl shadow-lg max-w-md w-full">
+      <img id="article-image" src="https://source.unsplash.com/random/?house" alt="Word" class="w-full h-48 object-cover rounded-xl mb-4">
+      <h2 id="article-german" class="text-3xl font-bold text-center text-gray-900 mb-2">das Haus</h2>
+      <p id="article-ukrainian" class="text-center text-gray-500 blur-sm cursor-pointer text-lg" onclick="this.classList.toggle('blur-sm')">Дім</p>
+      <button class="mt-6 w-full bg-blue-600 text-white py-3 rounded-full text-lg font-medium hover:bg-blue-700" onclick="playAudio('haus.mp3')">▶ Вимова</button>
+    </div>
+  </main>
+  <script src="articles.js"></script>
+</body>
+</html>
