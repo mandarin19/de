@@ -7,44 +7,24 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="styles.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
-    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-        <img id="word-image" src="https://via.placeholder.com/300x200?text=Зображення" alt="Word Image" class="w-full h-48 object-cover rounded mb-4">
-        <h2 id="word-german" class="text-2xl font-bold text-center mb-2"></h2>
-        <h3 id="word-ukrainian" class="text-xl text-center mb-4"></h3>
-        <button id="audio-btn" class="bg-blue-500 text-white px-4 py-2 rounded w-full mb-4" disabled>Завантаження...</button>
-        <div class="flex justify-between">
-            <button id="prev-btn" class="bg-gray-500 text-white px-4 py-2 rounded">Попереднє</button>
-            <button id="next-btn" class="bg-gray-500 text-white px-4 py-2 rounded">Наступне</button>
+<body class="bg-black text-white min-h-screen flex flex-col items-center">
+    <nav class="w-full bg-black py-4 fixed top-0 z-10">
+        <div class="max-w-4xl mx-auto flex justify-center gap-6">
+            <a href="words.html" class="text-lg font-bold text-gray-300">Слова</a>
+            <a href="articles.html" class="text-lg hover:text-gray-300 transition">Артиклі</a>
+            <a href="phrases.html" class="text-lg hover:text-gray-300 transition">Фрази</a>
         </div>
-    </div>
-    <button id="menu-btn" class="fixed top-4 right-4 bg-blue-500 text-white p-2 rounded">Меню</button>
-    <div id="menu" class="fixed top-0 right-0 bg-white p-6 shadow-lg transform translate-x-full transition-transform hidden">
-        <button id="close-menu" class="mb-4 text-red-500">Закрити</button>
-        <div class="flex flex-col gap-4">
-            <select id="section">
-                <option value="index">Головна</option>
-                <option value="words" selected>Слова</option>
-                <option value="articles">Артиклі</option>
-                <option value="phrases">Фрази</option>
-            </select>
-            <select id="mode">
-                <option value="20" selected>20 слів</option>
-                <option value="random">Випадковий порядок</option>
-            </select>
-            <select id="category">
-                <option value="all" selected>Усі категорії</option>
-                <option value="Вітання">Вітання</option>
-                <option value="Ввічливість">Ввічливість</option>
-                <option value="Люди">Люди</option>
-                <option value="Дія">Дія</option>
-                <option value="Питання">Питання</option>
-                <option value="Дом">Дом</option>
-                <option value="Транспорт">Транспорт</option>
-                <option value="Еда">Еда</option>
-                <option value="Час">Час</option>
-                <option value="Опис">Опис</option>
-            </select>
+    </nav>
+    <div class="flex-grow flex flex-col items-center justify-center">
+        <div class="bg-gray-900 p-6 rounded-lg shadow-lg w-full max-w-md text-center">
+            <img id="word-image" src="https://via.placeholder.com/300x200?text=Зображення" alt="Word Image" class="w-full h-48 object-cover rounded mb-4">
+            <h2 id="word-german" class="text-2xl font-bold mb-2"></h2>
+            <h3 id="word-ukrainian" class="text-xl mb-4 blur-sm"></h3>
+            <button id="audio-btn" class="bg-white text-black px-4 py-2 rounded w-full mb-4" disabled>Завантаження...</button>
+            <div class="flex justify-between">
+                <button id="prev-btn" class="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-600">Попереднє</button>
+                <button id="next-btn" class="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-600">Наступне</button>
+            </div>
         </div>
     </div>
     <script src="words.js"></script>
