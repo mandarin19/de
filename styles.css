@@ -1,36 +1,4 @@
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-}
-
+/* styles.css */
 .blur-sm {
-  transition: filter 0.3s ease;
-}
-
-.blur-sm:not(.blur-sm:hover) {
-  filter: blur(4px);
-}
-
-button, select {
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  outline: none;
-}
-
-.card {
-  transition: transform 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-2px);
-}
-
-select {
-  appearance: none;
-  background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
-  background-repeat: no-repeat;
-  background-position-x: 98%;
-  background-position-y: 50%;
-}
-
-#menu {
-  z-index: 50;
+  filter: blur(2px);
 }
