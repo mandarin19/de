@@ -1,3 +1,8 @@
+// API ключи
+const PIXABAY_API_KEY = '49715163-f6f66decab0b2289715c8648f';
+const PLAYHT_API_KEY = 'f51fcc9401c845f99852a15529797167';
+const PLAYHT_USER_ID = 'C1LWicA88EgXcyTYDN6xlkw5Qrd2';
+
 fetch('data/words.json')
   .then(response => {
     if (!response.ok) throw new Error('Не удалось загрузить words.json');
@@ -23,27 +28,88 @@ fetch('data/words.json')
     const categorySelect = document.getElementById('category');
 
     if (!menuBtn || !closeMenuBtn || !menu) {
-      console.error('Ошибка: Элементы меню не найдены в DOM');
+      console.error('Ошибка: Элементы меню не найдены');
       return;
+    }
+
+    async function fetchImage(word) {
+      try {
+        const response = await fetch(
+          `https://pixabay.com/api/?key=${PIXABAY_API_KEY}&q=${encodeURIComponent(word)}&lang=de&image_type=photo`
+        );
+        const data = await response.json();
+        return data.hits[0]?.webformatURL || 'https://via.placeholder.com/300x200?text=Зображення';
+      } catch (err) {
+        console.error('Ошибка Pixabay:', err);
+        return 'https://via.placeholder.com/300x200?text=Зображення';
+      }
+    }
+
+    async function fetchAudio(word) {
+      try {
+        const response = await fetch('https://api.play.ht/v2/tts', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${PLAYHT_API_KEY}`,
+            'X-USER-ID': PLAYHT_USER_ID,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            text: word,
+            voice: 'de-DE-Felix-Male',
+            output_format: 'mp3'
+          })
+        });
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
+        if (data._links && data._links.mp3) {
+          return data._links.mp3.href;
+        }
+        throw new Error('Нет ссылки на аудио');
+      } catch (err) {
+        console.error('Ошибка Play.ht:', err);
+        return null;
+      }
     }
 
     function updateCard() {
       if (currentWords.length === 0) return;
       const word = currentWords[currentIndex];
-      imageEl.src = 'https://via.placeholder.com/300x200?text=' + encodeURIComponent(word.german);
       germanEl.textContent = word.german;
       ukrainianEl.textContent = word.ukrainian;
       ukrainianEl.classList.add('blur-sm');
       ukrainianEl.onclick = () => ukrainianEl.classList.toggle('blur-sm');
-      audioBtn.disabled = false;
-      audioBtn.textContent = '▶ Вимова';
+      audioBtn.disabled = true;
+      audioBtn.textContent = 'Завантаження...';
+
+      // Картинка
+      fetchImage(word.german).then(url => {
+        imageEl.src = url;
+        imageEl.onerror = () => { imageEl.src = 'https://via.placeholder.com/300x200?text=Зображення'; };
+      });
+
+      // Аудио
+      fetchAudio(word.german).then(url => {
+        if (url) {
+          audioBtn.dataset.audio = url;
+          audioBtn.disabled = false;
+          audioBtn.textContent = '▶ Вимова';
+        } else {
+          audioBtn.textContent = 'Аудіо недоступне';
+        }
+      });
     }
 
     function playAudio() {
-      const word = currentWords[currentIndex];
-      const utterance = new SpeechSynthesisUtterance(word.german);
-      utterance.lang = 'de-DE'; // Немецкий язык
-      window.speechSynthesis.speak(utterance);
+      const audioUrl = audioBtn.dataset.audio;
+      if (audioUrl) {
+        const audio = new Audio(audioUrl);
+        audio.play().catch(err => {
+          console.error('Ошибка воспроизведения:', err);
+          audioBtn.textContent = 'Аудіо недоступне';
+        });
+      }
     }
 
     function shuffle(array) {

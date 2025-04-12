@@ -1,80 +1,50 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Слова - Вивчення німецької</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вивчення німецької - Слова</title>
+    <link href="styles.css" rel="stylesheet">
 </head>
-<body class="bg-gray-50 flex flex-col min-h-screen font-sans">
-  <header class="bg-white shadow-sm">
-    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-      <div class="text-xl font-bold text-gray-900">Слова</div>
-      <button id="menu-btn" class="text-gray-600 hover:text-gray-800 focus:outline-none">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-        </svg>
-      </button>
-    </nav>
-  </header>
-  <div id="menu" class="fixed inset-y-0 right-0 w-64 bg-white shadow-lg transform translate-x-full hidden transition-transform duration-300 z-50">
-    <div class="p-4">
-      <button id="close-menu" class="text-gray-600 hover:text-gray-800 mb-4">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </button>
-      <div class="mb-4">
-        <label for="section" class="block text-sm font-medium text-gray-700 mb-2">Розділ:</label>
-        <select id="section" class="w-full p-2 border rounded-lg">
-          <option value="words">Слова</option>
-          <option value="articles">Артиклі</option>
-          <option value="phrases">Фрази</option>
-        </select>
-      </div>
-      <div class="mb-4">
-        <label for="mode" class="block text-sm font-medium text-gray-700 mb-2">Режим:</label>
-        <select id="mode" class="w-full p-2 border rounded-lg">
-          <option value="20">20 елементів</option>
-          <option value="random">Рандом</option>
-          <option value="repeat">Повторення</option>
-        </select>
-      </div>
-      <div>
-        <label for="category" class="block text-sm font-medium text-gray-700 mb-2">Категорія:</label>
-        <select id="category" class="w-full p-2 border rounded-lg">
-          <option value="all">Усі</option>
-          <option value="Дом">Дом</option>
-          <option value="Еда">Їжа</option>
-          <option value="Транспорт">Транспорт</option>
-          <option value="Животные">Тварини</option>
-          <option value="Природа">Природа</option>
-          <option value="Люди">Люди</option>
-          <option value="Учёба">Навчання</option>
-          <option value="Работа">Робота</option>
-          <option value="Здоровье">Здоров’я</option>
-          <option value="Погода">Погода</option>
-          <option value="Путешествия">Подорожі</option>
-          <option value="Хобби">Хобі</option>
-        </select>
-      </div>
-    </div>
-  </div>
-  <main class="flex-grow px-4 py-8">
-    <div class="max-w-md mx-auto">
-      <div class="bg-white p-6 rounded-2xl shadow-lg card">
-        <img id="word-image" src="https://via.placeholder.com/300x200?text=Зображення" alt="Word" class="w-full h-48 object-cover rounded-xl mb-4">
-        <h2 id="word-german" class="text-3xl font-bold text-center text-gray-900 mb-2"></h2>
-        <p id="word-ukrainian" class="text-center text-gray-500 blur-sm cursor-pointer text-lg"></p>
-        <button id="audio-btn" class="mt-6 w-full bg-blue-600 text-white py-3 rounded-full text-lg font-medium hover:bg-blue-700">▶ Вимова</button>
-        <div class="flex justify-between mt-4">
-          <button id="prev-btn" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300">Назад</button>
-          <button id="next-btn" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300">Далі</button>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+        <img id="word-image" src="https://via.placeholder.com/300x200?text=Зображення" alt="Word Image" class="w-full h-48 object-cover rounded mb-4">
+        <h2 id="word-german" class="text-2xl font-bold text-center mb-2"></h2>
+        <h3 id="word-ukrainian" class="text-xl text-center mb-4"></h3>
+        <button id="audio-btn" class="bg-blue-500 text-white px-4 py-2 rounded w-full mb-4" disabled>Завантаження...</button>
+        <div class="flex justify-between">
+            <button id="prev-btn" class="bg-gray-500 text-white px-4 py-2 rounded">Попереднє</button>
+            <button id="next-btn" class="bg-gray-500 text-white px-4 py-2 rounded">Наступне</button>
         </div>
-      </div>
     </div>
-  </main>
-  <script src="words.js"></script>
+    <button id="menu-btn" class="fixed top-4 right-4 bg-blue-500 text-white p-2 rounded">Меню</button>
+    <div id="menu" class="fixed top-0 right-0 bg-white p-6 shadow-lg transform translate-x-full transition-transform hidden">
+        <button id="close-menu" class="mb-4 text-red-500">Закрити</button>
+        <div class="flex flex-col gap-4">
+            <select id="section">
+                <option value="words" selected>Слова</option>
+                <option value="articles">Артиклі</option>
+                <option value="phrases">Фрази</option>
+            </select>
+            <select id="mode">
+                <option value="20" selected>20 слів</option>
+                <option value="random">Випадковий порядок</option>
+            </select>
+            <select id="category">
+                <option value="all" selected>Усі категорії</option>
+                <option value="Вітання">Вітання</option>
+                <option value="Ввічливість">Ввічливість</option>
+                <option value="Люди">Люди</option>
+                <option value="Дія">Дія</option>
+                <option value="Питання">Питання</option>
+                <option value="Дом">Дом</option>
+                <option value="Транспорт">Транспорт</option>
+                <option value="Еда">Еда</option>
+                <option value="Час">Час</option>
+                <option value="Опис">Опис</option>
+            </select>
+        </div>
+    </div>
+    <script src="words.js"></script>
 </body>
 </html>
