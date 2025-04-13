@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вивчення німецької</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="styles.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вивчення німецької</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-black text-white min-h-screen flex flex-col items-center">
-    <nav class="w-full bg-black py-4 fixed top-0 z-10">
-        <div class="max-w-4xl mx-auto flex justify-center gap-6">
-            <a href="words.html" class="text-lg hover:text-gray-300 transition">Слова</a>
-            <a href="articles.html" class="text-lg hover:text-gray-300 transition">Артиклі</a>
-            <a href="phrases.html" class="text-lg hover:text-gray-300 transition">Фрази</a>
-        </div>
+<body class="bg-gray-50 flex flex-col min-h-screen font-sans">
+  <header class="bg-white shadow-sm">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+      <div class="text-xl font-bold text-gray-900">Німецька легко</div>
+      <ul class="flex space-x-6">
+        <li><a href="words.html" class="text-gray-800 hover:text-blue-600 text-lg font-medium">Слова</a></li>
+        <li><a href="articles.html" class="text-gray-800 hover:text-blue-600 text-lg font-medium">Артиклі</a></li>
+        <li><a href="phrases.html" class="text-gray-800 hover:text-blue-600 text-lg font-medium">Фрази</a></li>
+      </ul>
     </nav>
-    <div class="flex-grow flex flex-col items-center justify-center">
-        <h1 class="text-4xl font-bold mb-6">Вивчення німецької</h1>
-        <p class="text-lg">Оберіть розділ для початку</p>
+  </header>
+  <main class="flex-grow flex items-center justify-center px-4">
+    <div class="text-center">
+      <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Вивчай німецьку легко!</h1>
+      <p class="text-lg text-gray-600 mb-8">500 слів, артиклі та 300 фраз для рівня A1 з картинками та аудіо.</p>
+      <a href="words.html" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-full text-lg font-medium hover:bg-blue-700">Почати</a>
     </div>
+  </main>
 </body>
 </html>
